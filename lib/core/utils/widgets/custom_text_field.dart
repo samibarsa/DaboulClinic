@@ -1,3 +1,4 @@
+import 'package:doctor_app/core/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -54,8 +55,9 @@ class CustomTextField extends StatelessWidget {
     return OutlineInputBorder(
         borderRadius: BorderRadius.circular(radius),
         borderSide: BorderSide(
-            color:
-                title != "مريض,تصوير مقطعي" ? Colors.black : Colors.transparent,
+            color: title != "مريض,تصوير مقطعي"
+                ? Color(AppColor.primaryColor)
+                : Colors.transparent,
             width: width));
   }
 }

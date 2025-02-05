@@ -1,3 +1,4 @@
+import 'package:doctor_app/core/utils/constant.dart';
 import 'package:flutter/material.dart';
 
 class CustomRadioTile extends StatelessWidget {
@@ -17,7 +18,7 @@ class CustomRadioTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RadioListTile<String>(
-      fillColor: const WidgetStatePropertyAll(Colors.green),
+      fillColor: const WidgetStatePropertyAll(Color(AppColor.primaryColor)),
       title: Text(title),
       value: value,
       groupValue: groupValue,

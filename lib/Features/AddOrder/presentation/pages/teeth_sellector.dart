@@ -107,14 +107,15 @@ class _TeethState extends State<Teeth> {
                       height: 30.h,
                     ),
                     Card(
-                      color: Colors.green[100],
+                      color: Color(0xffE3F2FD),
                       child: SizedBox(
                         height: 40,
                         width: 60,
                         child: Center(
                           child: Text(
                             toothNumber,
-                            style: TextStyle(fontSize: 16.sp),
+                            style:
+                                TextStyle(fontSize: 16.sp, color: Colors.black),
                           ),
                         ),
                       ),
@@ -151,7 +152,7 @@ class _TeethState extends State<Teeth> {
                             }
                           }
                         },
-                        titleColor: Colors.black,
+                        titleColor: Colors.white,
                       ),
                     ),
                   ],

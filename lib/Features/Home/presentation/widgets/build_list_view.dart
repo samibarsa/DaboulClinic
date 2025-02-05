@@ -36,20 +36,13 @@ class BuildListView extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(bottom: 6.h),
-                child: InkWell(
-                  onTap: () {
-                    MovingNavigation.navTo(context,
-                        page: OrderDetails(
-                          order: order,
-                          doctor: state.doctor,
-                          patient: patientThis.first,
-                        ));
-                  },
-                  child: ListTileCard(
-                    papatientName: patientThis.first.name,
-                    type: order.detail.type.typeName,
-                    date: ago,
-                  ),
+                child: ListTileCard(
+                  papatientName: patientThis.first.name,
+                  type: order.detail.type.typeName,
+                  date: ago,
+                  order: order,
+                  doctor: state.doctor,
+                  patient: patientThis.first,
                 ),
               ),
               if (index == orders.length - 1) SizedBox(height: 75.h),

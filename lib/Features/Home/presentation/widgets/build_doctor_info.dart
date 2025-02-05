@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:shimmer/shimmer.dart';
 import 'package:doctor_app/Features/Auth/data/repo/auth_repository_impl.dart';
 import 'package:doctor_app/Features/Auth/domain/usecase/usecacses.dart';
@@ -24,14 +26,19 @@ Widget buildDoctorInfo(
             SvgPicture.asset(ImagesPath.doctor),
             SizedBox(width: 8.w),
             Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.grey[100]!,
-              child: Container(
-                width: 100.w,
-                height: 20.h,
-                decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  borderRadius: BorderRadius.circular(4.r),
+              baseColor: Colors.grey[800]!, // لون داكن أساسي
+              highlightColor: Colors.grey[600]!, // لون فاتح للوميض
+              child: Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.identity()
+                  ..scale(-1.0, 1.0, 1.0), // عكس الاتجاه
+                child: Container(
+                  width: 100.w,
+                  height: 20.h,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[850], // لون متناسق مع الوضع الداكن
+                    borderRadius: BorderRadius.circular(4.r),
+                  ),
                 ),
               ),
             ),
@@ -54,7 +61,6 @@ Widget buildDoctorInfo(
                       child: Stack(
                         alignment: Alignment.bottomCenter,
                         children: [
-                          SvgPicture.asset(ImagesPath.wellcome),
                           Padding(
                             padding: EdgeInsets.only(bottom: 79.w),
                             child: CustomButton(
@@ -87,7 +93,10 @@ Widget buildDoctorInfo(
               },
               child: Row(
                 children: [
-                  SvgPicture.asset(ImagesPath.doctor),
+                  SvgPicture.asset(
+                    ImagesPath.doctor,
+                    color: Colors.white,
+                  ),
                   SizedBox(width: 8.w),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

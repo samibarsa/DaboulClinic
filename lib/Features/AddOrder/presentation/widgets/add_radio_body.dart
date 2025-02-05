@@ -61,7 +61,7 @@ class AddRadioBody extends StatelessWidget {
                   title: titleButton,
                   color: 0xffFFFF,
                   onTap: onTap,
-                  titleColor: Colors.black,
+                  titleColor: Colors.white,
                 ),
               ),
             ),

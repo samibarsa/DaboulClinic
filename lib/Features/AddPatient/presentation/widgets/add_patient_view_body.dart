@@ -102,7 +102,7 @@ class AddOrederViewBody extends StatelessWidget {
                           title: " <  التالي",
                           color: 0xffFFFF,
                           onTap: () => submitForm(context),
-                          titleColor: Colors.black),
+                          titleColor: Colors.white),
                     ),
                   ],
                 ),

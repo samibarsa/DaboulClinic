@@ -255,7 +255,7 @@ class ConfirmAddOrder extends StatelessWidget {
                         BlocProvider.of<OrderCubit>(context).fetchOrders(
                             startDate: startOfMonth, endDate: endOfMonth);
                       },
-                      titleColor: Colors.black,
+                      titleColor: Colors.white,
                     ),
                   ),
                   SizedBox(
@@ -281,7 +281,7 @@ class ConfirmAddOrder extends StatelessWidget {
                             type,
                             notes.text);
                       },
-                      titleColor: Colors.black,
+                      titleColor: Colors.white,
                     ),
                   ),
                   SizedBox(

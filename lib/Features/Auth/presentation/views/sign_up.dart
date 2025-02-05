@@ -1,5 +1,6 @@
 import 'package:doctor_app/Features/Auth/presentation/views/login_view.dart';
 import 'package:doctor_app/Features/Auth/presentation/widget/signup_email_view_body.dart';
+import 'package:doctor_app/core/utils/constant.dart';
 import 'package:doctor_app/core/utils/navigator/navigator.dart';
 import 'package:doctor_app/core/utils/widgets/Auth_view_body.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,7 @@ class _SignUpViewState extends State<SignUpView>
               return LinearProgressIndicator(
                 value: _animationController.value * (currentStep / totalSteps),
                 minHeight: 5,
-                color: Colors.green,
+                color: Color(AppColor.primaryColor),
                 backgroundColor: Colors.grey[300],
               );
             },

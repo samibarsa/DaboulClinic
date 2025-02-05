@@ -25,8 +25,8 @@ class ImagesPath {
 }
 
 class AppColor {
-  static const primaryColor = 0xff4CAF50;
-  static const secondColor = 0xff00AFF3;
+  static const primaryColor = 0xff00AFF3;
+  static const secondColor = 0xffE3F2FD;
   static const greenActive = 0xffC8E6C9;
 }
 

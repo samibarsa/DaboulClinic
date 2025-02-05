@@ -144,7 +144,7 @@ class OrderDetailTable extends StatelessWidget {
               SizedBox(height: 40.h),
               CustomButton(
                   title: "عرض الصورة",
-                  color: 0xffFFFFFF,
+                  color: 0xff,
                   onTap: () {
                     MovingNavigation.navTo(context,
                         page: Scaffold(
@@ -160,7 +160,7 @@ class OrderDetailTable extends StatelessWidget {
                           ),
                         ));
                   },
-                  titleColor: Color(AppColor.primaryColor)),
+                  titleColor: Color(0xffE3F2FD)),
               SizedBox(height: 40.h),
               ShowOrderState(order: order)
             ],
@@ -188,8 +188,7 @@ class ShowOrderState extends StatelessWidget {
           width: MediaQuery.of(context).size.width / 1.1,
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
           decoration: BoxDecoration(
-            color:
-                order.isImaged ? Colors.green.shade100 : Colors.amber.shade100,
+            color: order.isImaged ? Color(0xffE3F2FD) : Colors.amber.shade100,
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Row(
@@ -197,7 +196,9 @@ class ShowOrderState extends StatelessWidget {
             children: [
               Icon(
                 order.isImaged ? Icons.check_circle : Icons.access_time_filled,
-                color: order.isImaged ? Colors.green : Colors.amber,
+                color: order.isImaged
+                    ? Color(AppColor.primaryColor)
+                    : Colors.amber,
                 size: 24.w,
               ),
               SizedBox(width: 10.w),
@@ -209,7 +210,7 @@ class ShowOrderState extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: order.isImaged
-                        ? Colors.green.shade800
+                        ? Color(AppColor.primaryColor)
                         : Colors.amber.shade800,
                     fontWeight: FontWeight.w500,
                   ),

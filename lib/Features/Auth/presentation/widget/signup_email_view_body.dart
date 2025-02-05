@@ -1,5 +1,6 @@
 import 'package:doctor_app/Features/Auth/presentation/views/login_view.dart';
 import 'package:doctor_app/Features/Auth/presentation/widget/signup_password_view_body.dart';
+import 'package:doctor_app/core/utils/constant.dart';
 import 'package:doctor_app/core/utils/navigator/navigator.dart';
 import 'package:doctor_app/core/utils/widgets/Auth_view_body.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +66,7 @@ class _SignUpEmailViewState extends State<SignUpEmailView>
             builder: (context, child) => LinearProgressIndicator(
               value: _progressAnimation.value,
               minHeight: 5,
-              color: Colors.green,
+              color: Color(AppColor.primaryColor),
               backgroundColor: Colors.grey[300],
             ),
           ),

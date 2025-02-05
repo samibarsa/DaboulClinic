@@ -98,7 +98,7 @@ class _SignUpPasswordViewState extends State<SignUpPasswordView>
                   builder: (context, child) => LinearProgressIndicator(
                     value: _progressAnimation.value,
                     minHeight: 5,
-                    color: Colors.green,
+                    color: Color(AppColor.primaryColor),
                     backgroundColor: Colors.grey[300],
                   ),
                 ),

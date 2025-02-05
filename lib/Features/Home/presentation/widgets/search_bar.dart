@@ -45,7 +45,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
         textDirection: TextDirection.rtl,
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.grey[300],
+            border: Border.all(color: Color(AppColor.primaryColor)),
             borderRadius: BorderRadius.circular(8.r), // الإبقاء على نصف القطر
           ),
           child: TextField(

@@ -49,7 +49,7 @@ class GoogleButton extends StatelessWidget {
               titleColor: Colors.black,
             )),
         Padding(
-          padding: const EdgeInsets.only(top: 12, left: 280),
+          padding: EdgeInsets.only(top: 12.h, left: 330.w),
           child: SvgPicture.asset(ImagesPath.google),
         ),
       ],

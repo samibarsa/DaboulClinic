@@ -1,4 +1,5 @@
 import 'package:doctor_app/Features/Home/presentation/widgets/table_item.dart';
+import 'package:doctor_app/core/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,7 +29,7 @@ class SummaryBody extends StatelessWidget {
             _buildOrderTypeSummary(),
             SizedBox(height: 24.h),
             Divider(
-              color: Colors.green[400],
+              color: Color(AppColor.primaryColor),
             ),
             SizedBox(
               height: 20.h,

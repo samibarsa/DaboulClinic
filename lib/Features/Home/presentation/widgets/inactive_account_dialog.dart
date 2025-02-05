@@ -26,7 +26,6 @@ class InactiveAccountDialog extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.r),
         ),
-        backgroundColor: Colors.white,
         title: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -49,7 +48,6 @@ class InactiveAccountDialog extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 22.sp,
-                color: Colors.black87,
               ),
               textAlign: TextAlign.center,
             ),
@@ -67,19 +65,19 @@ class InactiveAccountDialog extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(8.w),
               decoration: BoxDecoration(
-                color: Colors.grey[100],
+                color: Colors.grey,
                 borderRadius: BorderRadius.circular(8.r),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.email, color: Colors.grey[600], size: 20.sp),
+                  Icon(Icons.email, color: Colors.grey[900], size: 20.sp),
                   SizedBox(width: 8.w),
                   Flexible(
                     child: Text(
                       email,
                       style:
-                          TextStyle(fontSize: 14.sp, color: Colors.grey[800]),
+                          TextStyle(fontSize: 14.sp, color: Colors.grey[900]),
                       textAlign: TextAlign.center,
                     ),
                   ),

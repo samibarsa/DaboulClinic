@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:doctor_app/Features/AddOrder/presentation/pages/add_cbct_1.dart';
 import 'package:doctor_app/Features/AddOrder/presentation/pages/add_pano_view2.dart';
 import 'package:doctor_app/Features/AddOrder/presentation/pages/add_sefalo_1.dart';
@@ -60,12 +62,16 @@ class AddOrderViewBody extends StatelessWidget {
 
 Widget _buildCarrlListTile(String title, void Function()? onTap) {
   return Card(
+    color: Colors.black12,
     margin: const EdgeInsets.all(12),
     child: InkWell(
       onTap: onTap,
       child: ListTile(
         minVerticalPadding: 24.h,
-        trailing: SvgPicture.asset(ImagesPath.arrow),
+        trailing: SvgPicture.asset(
+          ImagesPath.arrow,
+          color: Color(AppColor.primaryColor),
+        ),
         subtitle: Text(title),
         minTileHeight: 48.h,
       ),

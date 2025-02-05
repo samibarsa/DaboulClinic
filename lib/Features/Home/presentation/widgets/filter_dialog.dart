@@ -1,3 +1,4 @@
+import 'package:doctor_app/core/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -42,7 +43,6 @@ class _FilterDialogState extends State<FilterDialog> {
         borderRadius: BorderRadius.circular(12.r),
       ),
       elevation: 8,
-      backgroundColor: Colors.white,
       child: Container(
         padding: EdgeInsets.all(16.r),
         child: Column(
@@ -64,12 +64,17 @@ class _FilterDialogState extends State<FilterDialog> {
               });
             }),
             SizedBox(height: 16.h),
-            ElevatedButton(
-              onPressed: () {
-                widget.onFilterChanged(isPanorama, isCephalometric, isCBCT);
-                Navigator.of(context).pop();
-              },
-              child: const Text('تطبيق'),
+            Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: Color(AppColor.primaryColor)),
+                  borderRadius: BorderRadius.circular(15.r)),
+              child: ElevatedButton(
+                onPressed: () {
+                  widget.onFilterChanged(isPanorama, isCephalometric, isCBCT);
+                  Navigator.of(context).pop();
+                },
+                child: const Text('تطبيق'),
+              ),
             ),
           ],
         ),

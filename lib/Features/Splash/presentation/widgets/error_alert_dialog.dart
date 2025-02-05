@@ -19,7 +19,10 @@ class ErrorAlertDialog extends StatelessWidget {
         child: Column(
           children: [
             errMessage == 'لا يوجد اتصال بالإنترنت.'
-                ? Image.asset(ImagesPath.offlineIcom)
+                ? Image.asset(
+                    ImagesPath.offlineIcom,
+                    color: Color(AppColor.primaryColor),
+                  )
                 : const SizedBox(),
             SizedBox(
               height: 20.h,
