@@ -1,8 +1,6 @@
 import 'package:doctor_app/Features/Home/domain/Entites/order.dart';
 import 'package:doctor_app/Features/Home/presentation/maneger/cubit/order_cubit/order_state.dart';
-import 'package:doctor_app/Features/Home/presentation/view/order_view_detiles.dart';
 import 'package:doctor_app/Features/Home/presentation/widgets/list_tile_card.dart';
-import 'package:doctor_app/core/utils/navigator/navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timeago/timeago.dart' as timeago;

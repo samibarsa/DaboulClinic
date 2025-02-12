@@ -1,14 +1,10 @@
 import 'package:doctor_app/Features/Home/domain/Entites/order.dart';
 import 'package:doctor_app/Features/Home/domain/Entites/patient.dart';
-import 'package:doctor_app/Features/Home/presentation/view/image_viewer.dart';
 import 'package:doctor_app/Features/Home/presentation/widgets/table_item.dart';
 import 'package:doctor_app/Features/Home/presentation/widgets/view_image_button.dart';
 import 'package:doctor_app/core/utils/constant.dart';
-import 'package:doctor_app/core/utils/navigator/navigator.dart';
-import 'package:doctor_app/core/utils/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class OrderDetailTable extends StatelessWidget {
   final OrderDetailTableData data;
