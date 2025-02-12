@@ -64,11 +64,11 @@ class RemoteDataSource {
     doctor_id,
     patient_id,
     order_price,
+    image_extention,
     isImaged,
     date,
     additional_notes,
-    tooth_number,
-    image_url, 
+    tooth_number, 
     output:order_output(
       id,
       output_type,

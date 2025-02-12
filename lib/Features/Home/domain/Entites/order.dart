@@ -9,14 +9,15 @@ class Order {
   final DateTime date;
   final ExaminationDetail detail;
   final String additionalNotes;
-  final String imageUrl;
+
   final int price;
   final Output output;
   final int? toothNumber;
+  final int? imageExtention;
 
   Order(
-    this.toothNumber, {
-    required this.imageUrl,
+    this.toothNumber,
+    this.imageExtention, {
     required this.output,
     required this.price,
     required this.isImaged,
@@ -31,6 +32,7 @@ class Order {
   factory Order.fromJson(Map<String, dynamic> json) {
     return Order(
       json['tooth_number'],
+      json['image_extention'],
       orderId: json['order_id'],
       isImaged: json['isImaged'],
       doctorId: json['doctor_id'],
@@ -40,7 +42,6 @@ class Order {
       additionalNotes: json['additional_notes'] ?? '',
       price: json['order_price'],
       output: Output.fromJson(json['output']),
-      imageUrl: json['image_url'],
     );
   }
 }

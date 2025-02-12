@@ -62,6 +62,8 @@ dependencies:
   timeago: ^3.7.0
   url_launcher: ^6.3.1
   auto_size_text:
+  image_downloader: ^0.31.0
+  dio: ^5.8.0+1
 
 dev_dependencies: null
 

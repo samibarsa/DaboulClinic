@@ -1,11 +1,15 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:doctor_app/Features/Auth/domain/Entities/doctor.dart';
 import 'package:doctor_app/Features/Home/domain/Entites/order.dart';
 import 'package:doctor_app/Features/Home/domain/Entites/patient.dart';
 import 'package:doctor_app/Features/Home/presentation/widgets/order_detail_table.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class OrderDetails extends StatefulWidget {
   const OrderDetails({
@@ -72,6 +76,18 @@ class _OrderDetailsState extends State<OrderDetails> {
 
   @override
   Widget build(BuildContext context) {
+    final data = OrderDetailTableData(
+      patientName: patientNameController.text,
+      patientAge: patientAge.toString(),
+      doctorName: doctorName,
+      selectedImageType: selectedImageType,
+      date: date,
+      time: DateFormat('hh:mm a').format(widget.order.date),
+      additionalNotes: additionalNotesController.text,
+      price: widget.order.price,
+      order: widget.order,
+      patient: widget.patient,
+    );
     return Scaffold(
       appBar: AppBar(
         forceMaterialTransparency: true,
@@ -88,16 +104,17 @@ class _OrderDetailsState extends State<OrderDetails> {
             SizedBox(height: 34.h),
             Center(
               child: OrderDetailTable(
-                order: widget.order,
-                patientNameController: patientNameController,
-                doctorName: doctorName,
-                patientAge: patientAge,
-                widget: widget,
-                selectedImageType: selectedImageType,
-                date: date,
-                time: DateFormat('hh:mm a').format(widget.order.date),
-                additionalNotesController: additionalNotesController,
-                price: widget.order.price,
+                data: data,
+                onCopyToClipboard: (text) async {
+                  await Clipboard.setData(ClipboardData(text: text));
+                },
+                onLaunchUrl: (url) async {
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
               ),
             ),
           ],
