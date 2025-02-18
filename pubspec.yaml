@@ -62,8 +62,10 @@ dependencies:
   timeago: ^3.7.0
   url_launcher: ^6.3.1
   auto_size_text:
-  image_downloader: ^0.31.0
+
   dio: ^5.8.0+1
+  webview_flutter: ^4.10.0
+  webview_flutter_plus: ^0.4.10
 
 dev_dependencies: null
 
@@ -81,6 +83,7 @@ flutter:
     - pubspec.yaml
     - asset/images/
     - asset/files/detail_id.json
+    - asset/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

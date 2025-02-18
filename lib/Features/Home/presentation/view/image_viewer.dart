@@ -18,7 +18,6 @@ class ImageViewerPage extends StatefulWidget {
 class _ImageViewerPageState extends State<ImageViewerPage> {
   bool _isDownloading = false;
   double _progress = 0.0;
-
   Future<void> _downloadImage() async {
     try {
       setState(() {
@@ -28,10 +27,27 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
       Dio dio = Dio();
       Random r = Random();
 
-      final dir = await getApplicationDocumentsDirectory();
-      final file =
-          File('${dir.path}/downloaded_image${r.nextInt(999999) + 17}.jpg');
+      // الحصول على مسار التخزين الخارجي
+      final Directory? externalStorageDir = await getExternalStorageDirectory();
 
+      if (externalStorageDir == null) {
+        throw Exception('تعذر الوصول إلى التخزين الخارجي');
+      }
+
+      // إنشاء مسار مجلد التنزيلات العام
+      final String downloadsPath = '/storage/emulated/0/Download';
+
+      // التأكد من وجود المجلد
+      final Directory downloadsDir = Directory(downloadsPath);
+      if (!downloadsDir.existsSync()) {
+        downloadsDir.createSync(recursive: true);
+      }
+
+      // إنشاء الملف في مجلد التنزيلات العام
+      final file =
+          File('$downloadsPath/downloaded_image${r.nextInt(999999) + 17}.jpg');
+
+      // تنزيل الصورة
       await dio.download(
         widget.imageUrl,
         file.path,
@@ -63,7 +79,7 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'حدث خطأ أثناء تنزيل الصورة.',
+            'حدث خطأ أثناء تنزيل الصورة: $error',
             textDirection: TextDirection.rtl,
           ),
         ),

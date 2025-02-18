@@ -1,5 +1,6 @@
 import 'package:doctor_app/Features/Home/domain/Entites/order.dart';
 import 'package:doctor_app/Features/Home/presentation/view/image_viewer.dart';
+import 'package:doctor_app/Features/Home/presentation/widgets/web_view.dart';
 import 'package:doctor_app/core/utils/navigator/navigator.dart';
 import 'package:doctor_app/core/utils/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -25,46 +26,44 @@ class _ViewImageButtonState extends State<ViewImageButton> {
   int _countdown = 3;
   bool _isCounting = false;
 
-  void _startCountdown() async {
-    if (widget.order.imageExtention != 4) {
-      final fileExtension = _getFileExtension(widget.order.imageExtention!);
-      final publicUrl = Supabase.instance.client.storage
+  Future<String?> getSignedUrl(String path) async {
+    try {
+      final response = await Supabase.instance.client.storage
           .from('images')
-          .getPublicUrl('${widget.order.orderId}.$fileExtension');
-
-      MovingNavigation.navTo(
-        context,
-        page: ImageViewerPage(
-          imageUrl: publicUrl,
-        ),
-      );
-    } else {
-      _showCountdown();
+          .createSignedUrl(path, 30);
+      return response;
+    } catch (e) {
+      debugPrint('Error creating signed URL: $e');
+      return null;
     }
   }
 
-  String _getFileExtension(int extensionCode) {
-    switch (extensionCode) {
-      case 1:
-        return 'jpg';
-      case 2:
-        return 'png';
-      case 3:
-        return 'jpeg';
-      default:
-        return 'png';
+  void _startCountdown() async {
+    if (widget.order.imageExtention == 4) {
+      _showCountdown();
+    } else {
+      final fileExtension = _getFileExtension(widget.order.imageExtention!);
+      final filePath = '${widget.order.orderId}.$fileExtension';
+      final signedUrl = await getSignedUrl(filePath);
+
+      if (signedUrl != null) {
+        MovingNavigation.navTo(
+          context,
+          page: ImageViewerPage(imageUrl: signedUrl),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('فشل في إنشاء رابط موقّع')),
+        );
+      }
     }
   }
 
   void _showCountdown() async {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          "تم نسخ الرابط إلى الحافظة!",
-          textDirection: TextDirection.rtl,
-        ),
-      ),
+      SnackBar(content: Text("تم نسخ الرابط إلى الحافظة!")),
     );
+
     setState(() => _isCounting = true);
 
     while (_countdown > 0) {
@@ -72,17 +71,24 @@ class _ViewImageButtonState extends State<ViewImageButton> {
       setState(() => _countdown--);
     }
 
-    final publicUrl = Supabase.instance.client.storage
-        .from('images')
-        .getPublicUrl('${widget.order.orderId}.dcm');
-
-    widget.onCopyToClipboard(publicUrl);
-    widget.onLaunchUrl('https://www.imaios.com/en/imaios-dicom-viewer');
+    final signedUrl = await getSignedUrl('${widget.order.orderId}.dcm');
+    if (signedUrl != null) {
+      widget.onCopyToClipboard(signedUrl);
+      widget.onLaunchUrl('https://www.imaios.com/en/imaios-dicom-viewer');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("فشل في توليد رابط الصورة.")),
+      );
+    }
 
     setState(() {
       _isCounting = false;
       _countdown = 3;
     });
+  }
+
+  String _getFileExtension(int extensionCode) {
+    return {1: 'jpg', 2: 'png', 3: 'jpeg'}[extensionCode] ?? 'png';
   }
 
   @override
@@ -97,7 +103,9 @@ class _ViewImageButtonState extends State<ViewImageButton> {
         CustomButton(
           title: "عرض الصورة",
           color: 0xff,
-          onTap: _isCounting ? null : _startCountdown,
+          onTap: () {
+            MovingNavigation.navTo(context, page: DicomViewerScreen());
+          },
           titleColor: Color(0xffE3F2FD),
         ),
       ],

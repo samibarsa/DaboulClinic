@@ -40,8 +40,6 @@ class OrderDetailTable extends StatelessWidget {
                   onCopyToClipboard: onCopyToClipboard,
                   onLaunchUrl: onLaunchUrl,
                 ),
-              if (data.order.imageExtention == 0)
-                Text("تم تسليم المريض الصورة"),
               SizedBox(height: 40.h),
               ShowOrderState(order: data.order),
             ],
