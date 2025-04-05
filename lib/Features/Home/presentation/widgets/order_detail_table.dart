@@ -38,7 +38,6 @@ class OrderDetailTable extends StatelessWidget {
                 ViewImageButton(
                   order: data.order,
                   onCopyToClipboard: onCopyToClipboard,
-                  onLaunchUrl: onLaunchUrl,
                 ),
               SizedBox(height: 40.h),
               ShowOrderState(order: data.order),

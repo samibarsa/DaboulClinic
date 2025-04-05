@@ -1,11 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.clinic_doctor"> <!-- Updated package name -->
+    package="com.example.clinic_doctor">
+
+    <!-- الأذونات المطلوبة -->
     <uses-permission android:name="android.permission.INTERNET"/>
-    
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
     <application
         android:label="أطباء مركز دعبول"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:requestLegacyExternalStorage="true">  <!-- لدعم أندرويد 10 -->
 
         <activity
             android:name=".MainActivity"
@@ -33,7 +40,6 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <!-- Replace "myapp" with a unique scheme for your app -->
                 <data android:scheme="myapp" android:host="reset-password" />
             </intent-filter>
         </activity>

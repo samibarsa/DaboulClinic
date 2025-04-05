@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:doctor_app/Features/Home/presentation/widgets/image_viewr_body.dart';
+import 'package:doctor_app/core/utils/function/function.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
@@ -35,17 +36,17 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
       }
 
       // إنشاء مسار مجلد التنزيلات العام
-      final String downloadsPath = '/storage/emulated/0/Download';
+      final String downloadsPath = '/storage/emulated/0/Daboul';
 
       // التأكد من وجود المجلد
       final Directory downloadsDir = Directory(downloadsPath);
       if (!downloadsDir.existsSync()) {
         downloadsDir.createSync(recursive: true);
       }
-
+      var imageExtention = widget.imageUrl.split(".")[2];
       // إنشاء الملف في مجلد التنزيلات العام
-      final file =
-          File('$downloadsPath/downloaded_image${r.nextInt(999999) + 17}.jpg');
+      final file = File(
+          '$downloadsPath/downloaded_image${r.nextInt(999999) * 17}.${imageExtention}}');
 
       // تنزيل الصورة
       await dio.download(
